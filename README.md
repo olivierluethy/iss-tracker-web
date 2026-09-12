@@ -1,36 +1,39 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# ISS Tracker
 
-## Getting Started
+A real-time web app that tracks the International Space Station on a 3D globe,
+shows its live position and telemetry, and predicts when it will next fly over
+your location.
 
-First, run the development server:
+## Features
+
+- **Live position** of the ISS plotted on an interactive globe.
+- **Orbit propagation** from real TLE (Two-Line Element) data using `satellite.js`.
+- **Next-pass prediction** for any location you enter, including whether the pass
+  is visible (sunlit satellite against a dark sky).
+- **Telemetry panel** with altitude, velocity, and ground-track coordinates.
+- **Location lookup** via geocoding so you can search by place name.
+- Educational facts and a starfield backdrop for a polished feel.
+
+## Tech
+
+- [Next.js](https://nextjs.org) 16 (App Router) + React 19 + TypeScript
+- Tailwind CSS v4, Framer Motion, lucide-react icons
+- `satellite.js` for orbital mechanics, `d3-geo` / `topojson-client` / `world-atlas`
+  for the globe, plus internal API routes (`/api/tle`, `/api/track`, `/api/iss`,
+  `/api/pass`, `/api/geocode`)
+
+## Run
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+To build for production:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+npm run build
+npm start
+```
